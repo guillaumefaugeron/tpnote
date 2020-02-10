@@ -9,7 +9,7 @@ use Symfony\Component\Routing\Annotation\Route;
 class CardtemplateController extends AbstractController
 {
     /**
-     * @Route("/cardtemplate", name="cardtemplate")
+     * @Route("/template", name="template")
      * @param CardTemplateRepository $cardTemplateRepository
      * @return \Symfony\Component\HttpFoundation\Response
      */
