@@ -11,27 +11,28 @@
             <a href="#" class="list-group-item list-group-item-action bg-light">Classic theme</a>
         </div>
     </div>
-    {% for card in cards %}
 
 
 
 
-        <div class="container">
 
-            <div class="card" style="width: 18rem;">
-                <img class="card-img-top" src="{{ card.preview }}" alt="Card image cap">
+        <div class="container" style="flex-direction: column">
+    {% for i in range (0,cards|length -1, 2)%}
+
+            <div class="card" style="width: 18rem;  ">
+                <img class="card-img-top" src="{{ cards[i].preview }}" alt="Card image cap">
                 <div class="card-body">
-                    <h5 class="card-title">{{ card.name }}</h5>
-                    <p class="card-text">{{ card.description }}</p>
+                    <h5 class="card-title">{{ cards[i].name }}</h5>
+                    <p class="card-text">{{ cards[i].description }}</p>
                     <h6>
-                        {% if card.premium %}
+                        {% if cards[i].premium %}
                             Only for premium members
                         {% else %}
                             For all members
                         {% endif %}
                     </h6>
 
-                        {% if card.active %}
+                        {% if cards[i].active %}
                             <h6 style="background-color: green"> Active</h6>
                         {% else %}
                             <h6 style="background-color: crimson"> NOT Active</h6>
@@ -39,8 +40,30 @@
                 </div>
             </div>
 
-        </div>
+            <div class="card" style="width: 18rem;">
+                <img class="card-img-top" src="{{ cards[i+1].preview }}" alt="Card image cap">
+                <div class="card-body">
+                    <h5 class="card-title">{{ cards[i+1].name }}</h5>
+                    <p class="card-text">{{ cards[i+1].description }}</p>
+                    <h6>
+                        {% if cards[i+1].premium %}
+                            Only for premium members
+                        {% else %}
+                            For all members
+                        {% endif %}
+                    </h6>
+
+                    {% if cards[i+1].active %}
+                        <h6 style="background-color: green"> Active</h6>
+                    {% else %}
+                        <h6 style="background-color: crimson"> NOT Active</h6>
+                    {% endif %}
+                </div>
+            </div>
     {% endfor %}
+
+
+        </div>
 
 {% endblock %}
 
