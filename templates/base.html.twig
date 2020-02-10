@@ -1,0 +1,55 @@
+
+
+
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>{% block title %}Welcome!{% endblock %}</title>
+
+        {% block stylesheets %}
+            <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+        {% endblock %}
+
+    </head>
+    <header>
+        {% block header %}
+            <nav class="navbar navbar-expand-lg navbar-light bg-light">
+                <a class="navbar-brand" href="#">Card template generator</a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"> </span>
+
+                </button>
+
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="navbar-nav mr-auto">
+
+                        <li {{ app.request.get('_route') == 'index' ? 'class="nav-item active"' : 'class="nav-item"'}}">
+                            <a class="nav-link" href="{{ path('index') }}">Accueil</a>
+                        </li>
+
+                        <li {{ app.request.get('_route') == 'cardtemplate' ? 'class="nav-item active"' : 'class="nav-item"'}}>
+                            <a class="nav-link disabled" href="{{ path('cardtemplate') }}">Card template</a>
+                        </li>
+                    </ul>
+                </div>
+            </nav>
+        {% endblock header %}
+    </header>
+    <body>
+        {% block body %}{% endblock %}
+        {% block javascripts %}{% endblock %}
+    </body>
+
+
+    {% block footer %}
+
+        <footer>
+            <div class="footer-copyright text-center py-3" style="position: fixed; bottom: 0; width: 100%">© 2020 Copyright:
+                <a href="https://mdbootstrap.com/education/bootstrap/"> Guillaume Faugeron</a>
+            </div>
+        </footer>
+
+    {% endblock footer %}
+
+</html>

@@ -1,0 +1,47 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello CardtemplateController!{% endblock %}
+
+{% block body %}
+    <div class="bg-light border-right " id="sidebar-wrapper" style="width: 10%">
+        <div class="list-group list-group-flush">
+            <a href="#" class="list-group-item list-group-item-action bg-light">Pro theme</a>
+            <a href="#" class="list-group-item list-group-item-action bg-light">Dark theme</a>
+            <a href="#" class="list-group-item list-group-item-action bg-light">User theme</a>
+            <a href="#" class="list-group-item list-group-item-action bg-light">Classic theme</a>
+        </div>
+    </div>
+    {% for card in cards %}
+
+
+
+
+        <div class="container">
+
+            <div class="card" style="width: 18rem;">
+                <img class="card-img-top" src="{{ card.preview }}" alt="Card image cap">
+                <div class="card-body">
+                    <h5 class="card-title">{{ card.name }}</h5>
+                    <p class="card-text">{{ card.description }}</p>
+                    <h6>
+                        {% if card.premium %}
+                            Only for premium members
+                        {% else %}
+                            For all members
+                        {% endif %}
+                    </h6>
+
+                        {% if card.active %}
+                            <h6 style="background-color: green"> Active</h6>
+                        {% else %}
+                            <h6 style="background-color: crimson"> NOT Active</h6>
+                        {% endif %}
+                </div>
+            </div>
+
+        </div>
+    {% endfor %}
+
+{% endblock %}
+
+
